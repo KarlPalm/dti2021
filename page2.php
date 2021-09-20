@@ -52,7 +52,7 @@
 	$list_html .="</ul>";
 	
 	if (isset($_POST["valik"])){
-		$pic_num = $photo_files[$i];
+		$pic_num = $_POST["photo_select"];
 		$pic_file = $photo_files[$pic_num];
 		$pic_html = '<img src="' .$photos_dir .$pic_file .'" alt="Tallinna Ülikool">';
 	}
