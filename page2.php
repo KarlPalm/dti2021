@@ -3,6 +3,7 @@
 	$todays_evaluation = null;
 	$inserted_adjective = null;
 	$adjective_error = null;
+	$photo_select_html = null;
 	
 	//kontrollime kas midagi on submittitud
 	if (isset($_POST["todays_adjective_input"])){
@@ -50,6 +51,12 @@
 	}
 	$list_html .="</ul>";
 	
+	if (isset($_POST["valik"])){
+		$pic_num = $photo_files[$i];
+		$pic_file = $photo_files[$pic_num];
+		$pic_html = '<img src="' .$photos_dir .$pic_file .'" alt="Tallinna Ülikool">';
+	}
+	
 	$photo_select_html = '<select name="photo_select">' ."\n";
 	for($i = 0; $i < $limit; $i ++){
 	$photo_select_html .= '<option value ="' .$i .'">' .$photo_files[$i] ."</option > \n";
@@ -90,10 +97,12 @@
 	?>
 	
 	<form method = "POST">
-	<?php echo $photo_select_html; ?>
+		<?php echo $photo_select_html; ?>
+		<input type="submit" name="valik" value="salvesta">
 	</form>
 	
 	<?php
+		echo $pic_file;
 		echo $pic_html; 
 		echo $list_html;
 	?>
